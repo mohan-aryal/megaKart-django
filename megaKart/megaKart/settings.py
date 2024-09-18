@@ -44,6 +44,7 @@ EXTERNAL_APPS = [
     'category',
     'accounts',
     'store',
+    'carts',
 ]
 
 INSTALLED_APPS.extend(EXTERNAL_APPS)
@@ -72,6 +73,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'category.context_processors.menu_links',
+                'carts.context_processors.counter',
             ],
         },
     },
@@ -135,7 +137,23 @@ STATICFILES_DIRS=[
 MEDIA_ROOT = BASE_DIR/'media'
 MEDIA_URL = '/media/'
 
+
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",
+    
+}
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Email setup 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'mohanaryal348@gmail.com'
+EMAIL_HOST_PASSWORD = 'bjot lsjs ejka vlyf'
